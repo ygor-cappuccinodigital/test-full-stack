@@ -16,7 +16,7 @@ CREATE TABLE IF NOT EXISTS `crudDB`.`usuarios` (
   `nome` VARCHAR(45) NOT NULL,
   `email` VARCHAR(45) NOT NULL,
   `senha` VARCHAR(45) NOT NULL,
-  `data` DATETIME NOT NULL,
+  `data` DATETIME DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`usuario_id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS `crudDB`.`produtos` (
   `imagem` VARCHAR(255) NOT NULL,
   `valor` INT(11) NOT NULL,
   `categoria` INT(11) NOT NULL,
-  `data` DATETIME NOT NULL,
+  `data` DATETIME DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`produto_id`),
   INDEX `fk_produtos_cat_produto_idx` (`categoria` ASC),
   INDEX `fk_produtos_usuarios1_idx` (`fk_usuario_id` ASC),
@@ -53,7 +53,7 @@ CREATE TABLE IF NOT EXISTS `crudDB`.`publicacoes` (
   `conteudo` VARCHAR(512) NOT NULL,
   `imagem` VARCHAR(45) NOT NULL,
   `categoria` INT(11) NOT NULL,
-  `data` DATETIME NOT NULL,
+  `data` DATETIME DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`pub_id`),
   INDEX `fk_publicacoes_cat_publicacao1_idx` (`categoria` ASC),
   INDEX `fk_publicacoes_usuarios1_idx` (`fk_usuario_id` ASC),
