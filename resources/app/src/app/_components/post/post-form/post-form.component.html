@@ -1,0 +1,69 @@
+<form [formGroup]="postForm">
+    <div class="row">
+
+        <div class="col-12">
+            <h4>Nova postagem</h4>
+            <hr>
+        </div>
+
+        <div class="col-12">
+            <div class="form-group">
+                <label for="product-title">Título *</label>
+                <input type="text" class="form-control" id="product-title" formControlName="title">
+            </div>
+        </div>
+
+        <div class="col-12">
+            <label>Descrição *</label>
+            <div class="form-group">
+                <textarea type="text" class="form-control" formControlName="description" rows="2"></textarea>
+            </div>
+        </div>
+
+        <div class="col-12">
+            <div class="form-group" *ngIf="arrayCategories">
+                <label for="">Categorias *</label>
+                <ng-select
+                        [items]="arrayCategories"
+                        bindLabel="name"
+                        bindValue="id"
+                        [multiple]="true"
+                        formControlName="categories">
+                </ng-select>
+            </div>
+        </div>
+
+        <div class="col-12">
+            <div class="form-group">
+                <label for="text">Texto *</label>
+                <textarea id="text" class="form-control" rows="8" formControlName="content"></textarea>
+            </div>
+        </div>
+
+        <div class="col-12">
+            <div class="custom-file">
+                <input type="file" class="custom-file-input" (change)="onFileSelected($event)" lang="br">
+                <label class="custom-file-label">Selecionar foto *</label>
+            </div>
+        </div>
+
+        <div class="col-12 d-flex justify-content-end mt-3">
+            <button *ngIf="!id" class="btn btn-primary" (click)="onSubmit()" [disabled]="postForm.invalid">
+                Adicionar post<i class="far fa-save ml-2"></i>
+            </button>
+            <button *ngIf="id" class="btn btn-primary" (click)="onSubmit()" [disabled]="postForm.invalid">
+                Salvar alterações<i class="far fa-save ml-2"></i>
+            </button>
+        </div>
+
+        <div class="col-12 mt-3 d-flex justify-content-center align-items-center"
+             style="height: 200px; overflow: hidden" *ngIf="post && post.photo">
+            <img class="img-fluid" src="{{API}}/get-image/{{ post.photo }}">
+        </div>
+
+        <div class="col-12">
+            <hr>
+        </div>
+
+    </div>
+</form>

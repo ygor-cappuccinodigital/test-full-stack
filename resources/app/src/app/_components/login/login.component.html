@@ -1,0 +1,37 @@
+<div class="row m-0 p-0 d-flex justify-content-center bg-white  align-items-center"
+     style="height: 100vh;">
+    <div class="col-12 col-md-4">
+        <form class="p-5 rounded bg-light shadow-sm" [formGroup]="formUser">
+            <div class="title text-center pb-4 pt-0 mt-0">
+                <h4 class="font-weight-bold text-dark">
+                    Cappucino <i class="fas fa-coffee"></i>
+                </h4>
+            </div>
+            <div class="alert alert-danger alert-dismissible fade show" *ngIf="loginFailed">
+                <b>Credenciais incorretas</b>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="E-mail" formControlName="email">
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control" placeholder="Senha" formControlName="password">
+            </div>
+            <div class="w-100">
+                <button class="btn btn-primary w-100" (click)="submitLogin()" [disabled]="verifyBtnDisabled()">
+                    Entrar
+                    <i class="fas fa-spinner fa-spin ml-1" *ngIf="loadingLogin"></i>
+                    <i class="fas fa-sign-in-alt ml-1" *ngIf="!loadingLogin"></i>
+                </button>
+            </div>
+            <div class="w-100 mt-3">
+                Ou <a routerLink="/registrar">cadastre-se</a>
+            </div>
+        </form>
+        <div class="text-center pt-5">
+            With <b class="text-danger">♥</b> by <a target="_blank" href="http://plima.me">@pedrolima</a>
+        </div>
+    </div>
+</div>

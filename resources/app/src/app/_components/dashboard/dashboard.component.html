@@ -1,0 +1,22 @@
+<div class="row" *ngIf="dashboard">
+    <div class="col-12 col-md-4">
+        <div class="card-body text-white bg-danger">
+            <h5><i class="fas fa-users mr-2"></i>usuários cadastrados</h5>
+            <h1>{{ dashboard.users || 0}}</h1>
+        </div>
+    </div>
+
+
+    <div class="col-12 col-md-4">
+        <div class="card-body text-black bg-warning">
+            <h5><i class="fas fa-archive mr-2"></i>produtos cadastrados</h5>
+            <h1>{{ dashboard.products || 0 }}</h1>
+        </div>
+    </div>
+    <div class="col-12 col-md-4">
+        <div class="card-body text-white bg-primary">
+            <h5><i class="far fa-file-alt mr-2"></i>posts cadastrados</h5>
+            <h1>{{ dashboard.posts || 0 }}</h1>
+        </div>
+    </div>
+</div>
