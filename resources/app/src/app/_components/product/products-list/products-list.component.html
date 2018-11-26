@@ -1,0 +1,60 @@
+<div class="row mb-4">
+    <div class="col-md-6">
+        <h4><i class="far fa-list-alt mr-1"></i>Lista de Produtos</h4>
+    </div>
+    <div class="col-md-6 d-flex justify-content-end">
+        <button class="btn btn-outline-primary" routerLink="/produtos/novo">
+            Novo produto<i class="fas fa-plus ml-2"></i>
+        </button>
+    </div>
+</div>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">Título</th>
+        <th scope="col">Valor</th>
+        <th scope="col">Categorias</th>
+        <th scope="col">Thumb</th>
+        <th scope="col" class="text-right">Editar</th>
+        <th scope="col" class="text-right">Deletar</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let product of products; let i = index">
+        <th scope="row">{{ product.id }}</th>
+        <td>{{ product.title }}</td>
+        <td>{{ (product.price | floatToBr) }}</td>
+        <td>
+            <div *ngIf="product.categories" >
+                <span class="badge badge-primary mr-1" *ngFor="let category of product.categories">
+                    {{ category.name }}
+                </span>
+            </div>
+        </td>
+        <td>
+            <div class="thumb-container">
+                <a href="{{API}}/get-image/{{ product.photo }}" target="_blank">
+                    <img src="{{API}}/get-image/{{ product.photo }}">
+                </a>
+            </div>
+        </td>
+        <td class="text-right" style="width: 100px;">
+            <button class="btn btn-primary btn-sm" routerLink="/produtos/editar/{{ product.id }}">
+                Editar<i class="far fa-edit ml-1"></i>
+            </button>
+        </td>
+        <td class="text-right" style="width: 100px;">
+            <button class="btn btn-danger btn-sm" (click)="remove(product.id, i)">
+                Excluir<i class="fas fa-times ml-1"></i>
+            </button>
+        </td>
+    </tr>
+    <tr *ngIf="products && products.length == 0">
+        <td class="pt-4" colspan="7">
+            <i>Nenhum produto encontrado.</i>
+        </td>
+    </tr>
+    </tbody>
+</table>

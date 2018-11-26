@@ -1,0 +1,40 @@
+<div class="row m-0 p-0 d-flex justify-content-center align-items-center"
+     style="height: 100vh;">
+    <div class="col-12 col-md-4">
+        <form class="p-5 rounded bg-light shadow-sm" [formGroup]="formUser">
+            <div class="title text-center pb-4 pt-0 mt-0">
+                <h4 class="font-weight-bold">
+                    Cappucino <i class="fas fa-coffee"></i>
+                </h4>
+            </div>
+            <div class="alert alert-danger alert-dismissible fade show" *ngIf="">
+                <b>Dados inválidos</b>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Nome" formControlName="name">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="E-mail" formControlName="email">
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control" placeholder="Senha" formControlName="password">
+            </div>
+            <div class="w-100">
+                <button class="btn btn-primary w-100" (click)="submitRegister()" [disabled]="verifyBtnDisabled()">
+                    Cadastrar-se
+                    <i class="fas fa-spinner fa-spin ml-1" *ngIf="submitLoading"></i>
+                    <i class="fas fa-plus ml-1" *ngIf="!submitLoading"></i>
+                </button>
+            </div>
+            <div class="w-100 mt-3">
+                Ou <a routerLink="/login">faça login</a>
+            </div>
+        </form>
+        <div class="text-center pt-5">
+            With <b class="text-danger">♥</b> by <a target="_blank" href="http://plima.me">@pedrolima</a>
+        </div>
+    </div>
+</div>

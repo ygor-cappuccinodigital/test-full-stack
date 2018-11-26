@@ -1,0 +1,70 @@
+<form [formGroup]="productForm">
+    <div class="row">
+
+        <div class="col-12" *ngIf="id">
+            <h4>Editar produto</h4>
+            <hr>
+        </div>
+
+        <div class="col-12" *ngIf="!id">
+            <h4>Novo produto</h4>
+            <hr>
+        </div>
+
+        <div class="col-12 col-md-6">
+            <div class="form-group">
+                <label for="product-title">Título *</label>
+                <input type="text" class="form-control" id="product-title" formControlName="title">
+            </div>
+        </div>
+
+        <div class="col-12 col-md-6 mb-3">
+            <label>Valor *</label>
+            <div class="input-group">
+                <input type="text" class="form-control" formControlName="price">
+                <div class="input-group-prepend ">
+                    <span class="input-group-text">R$</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12">
+            <div class="form-group" *ngIf="arrayCategories">
+                <label>Categorias *</label>
+                <ng-select
+                        [items]="arrayCategories"
+                        bindLabel="name"
+                        bindValue="id"
+                        [multiple]="true"
+                        formControlName="categories">
+                </ng-select>
+
+            </div>
+        </div>
+
+        <div class="col-12">
+            <div class="custom-file">
+                <input type="file" class="custom-file-input" (change)="onFileSelected($event)" lang="br" >
+                <label class="custom-file-label" >Selecionar foto *</label>
+            </div>
+        </div>
+
+        <div class="col-12 d-flex justify-content-end mt-3">
+            <button *ngIf="!id" class="btn btn-primary" (click)="onSubmit()" [ngClass]="btnSubmitCheckStyle('add')">
+                Adicionar produto<i class="far fa-save ml-2"></i>
+            </button>
+            <button *ngIf="id" class="btn btn-primary" (click)="onSubmit()"  [ngClass]="btnSubmitCheckStyle('edit')">
+                Salvar alterações<i class="far fa-save ml-2"></i>
+            </button>
+        </div>
+
+        <div class="col-12 mt-3 d-flex justify-content-center align-items-center" style="height: 200px; overflow: hidden" *ngIf="product && product.photo">
+            <img class="img-fluid" src="{{API}}/get-image/{{ product.photo }}">
+        </div>
+
+        <div class="col-12">
+            <hr>
+        </div>
+
+    </div>
+</form>

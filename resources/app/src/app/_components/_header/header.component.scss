@@ -1,0 +1,25 @@
+nav {
+  background-color: #111111;
+  .navbar-brand {
+    color: white;
+  }
+  .navbar-nav {
+    .nav-item {
+      padding-left: 0;
+      padding-right: 0;
+      margin-right: 20px;
+      margin-left: 20px;
+      .nav-link{
+        border-bottom: 2px solid rgba(0,0,0,0);
+        padding: 0;
+        text-transform: uppercase;
+        font-size: 15px;
+        font-weight: 600;
+        color: white !important;
+      }
+      .active {
+        border-bottom-color:rgba(255,255,255,1);
+      }
+    }
+  }
+}
