@@ -10,6 +10,7 @@ Os repositórios originais:
 ## Passos para executar a API.
 
 - Renomear o arquivo .env.example para .env
+- Instalar dependencias da aplicação <code> composer install </code>
 - Gerar uma key no Laravel, na raíz do projeto executar o comando no terminal <code>php artisan key:generate</code>
 - Criar um banco de dados e configurar no arquivo .env
 - Gerar as migrations, na raíz do projeto executar <code> php artisan migrate </code>
@@ -21,4 +22,3 @@ Os repositórios originais:
 
 
 <p>A aplicação está disponível também para teste no seguinte endereço: http://apicappuccino.plima.me Usuário padrão: admin@admin.com senha: admin, também pode cadastrar um usuário novo.</p>
--
